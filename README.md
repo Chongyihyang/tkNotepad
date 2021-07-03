@@ -2,8 +2,11 @@
 Probably the best tkinter notepad you will find
 
 before using, do make sure import a few modules:
+
 webdriver_manager.chrome
-audioplayer 
+
+tkinter audioplayer #search in google
+
 selenium
 
 Have fun using!
