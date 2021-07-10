@@ -1,4 +1,5 @@
-#import  
+
+    #import  
 import tkinter.font, tkinter, os, subprocess, pypandoc, time, tkinter.font as tkFont  
 import tkinter as tk
 import subprocess
@@ -23,16 +24,20 @@ def find(name, path):
     for root, dir,files in os.walk(path):
         if name in files:
             lol = (os.path.join(root, name))
-            print(lol)
 __root.title("Untitled - Notepad")
 FrameGod = Frame(__root)
 FrameGod.pack(side=TOP, fill = X)
-showmenuvar = IntVar()
-def showmenu():
-    varb = showmenuvar.get()
-    if 1:
-        FrameGod.pack_forget()
+def hidemenu():
+    global button
+    FrameGod.pack_forget()
+    button = Button(__thisTextPad, text="show menu", command=showmenu)
+    button.pack(anchor=NE)
 
+def showmenu():
+    __thisTextPad.pack_forget()
+    button.pack_forget()
+    FrameGod.pack(side=TOP, fill = X)
+    __thisTextPad.pack(expand=True, fill=BOTH,  side=RIGHT )
 #God
 __thisFileMenu = tk.Menu(FrameGod, tearoff = 0)
 __thisFileMenubutton = ttk.Menubutton(FrameGod, text='File', menu=__thisFileMenu, direction='below')
@@ -92,7 +97,7 @@ def showtime():
         lbl.grid_remove()
 showtime()
 __thisViewMenu.add_checkbutton(label="Show Time", variable=show_time, command=lambda: showtime())
-__thisViewMenu.add_checkbutton(label="Hide Menu bar", variable=showmenuvar, command=lambda: showmenu())
+__thisViewMenu.add_command(label="Hide Menu bar", command=lambda: hidemenu())
 def time(): 
     my_date = date.today()
     day = calendar.day_name[my_date.weekday()]  
